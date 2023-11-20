@@ -31,11 +31,9 @@ batch convert HEIC to JEPG
 file <- list.files("./pic", pattern = "HEIC")
 
 for (i in file) {
-tmp <- image_read(file.path("./pic",i))
-
-file.name <- str_replace(i, ".HEIC", "")
-
-image_write(tmp, path = paste0("./pic/",file.name,".jpeg"), format = "jpeg")
+  tmp <- image_read(file.path("./pic",i))
+  file.name <- str_replace(i, ".HEIC", "")
+  image_write(tmp, path = paste0("./pic/",file.name,".jpeg"), format = "jpeg")
 }
 ```
 

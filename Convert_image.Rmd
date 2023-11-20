@@ -1,0 +1,42 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+The magick package: Advanced Image-Processing in R
+
+Installing magick
+```{r}
+#install.packages("magick")
+library(magick)
+library("tidyverse")
+```
+features and formats are supported
+```{r}
+
+str(magick::magick_config())
+```
+Read and write
+```{r}
+tiger <- image_read("D:/R/image_convert/06YairItzhar.HEIC")
+```
+
+# Render svg to png bitmap
+```{r}
+image_write(tiger, path = "tiger.jpeg", format = "jpeg")
+```
+
+batch convert HEIC to JEPG
+```{r}
+file <- list.files("./pic", pattern = "HEIC")
+
+for (i in file) {
+tmp <- image_read(file.path("./pic",i))
+
+file.name <- str_replace(i, ".HEIC", "")
+
+image_write(tmp, path = paste0("./pic/",file.name,".jpeg"), format = "jpeg")
+}
+```
+
+
